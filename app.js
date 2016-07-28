@@ -11,8 +11,7 @@ console.log(colors.green("JWT Verifier: ") + "starting");
 
 // Globals --------------------------------------------------------------------------------------------------------------------------------
 
-var pathToSharedSecret = "HMACSharedSecret"; // Used for HMAC signing verification
-var pathToPublicKey = "RSAPublicKey"; // Used for RS signing verification and/or decryption
+var pathToSignatureVerifier = "SignatureVerifier"; // Either shared secret of certificate
 var pathToClaims = "claims"; //Place claims to be checked as a JSON object in here
 
 var submittedJWT, header, payload, signature, sharedSecret, publicKey = "";
@@ -35,10 +34,10 @@ if (process.argv.length < 3){
 
 function readFiles(){
 	
-	// Read in external file that contains HMAC shared secret
+	// Read in external file that contains HMAC shared secret or cert
 	try {
 		
-		sharedSecret = fs.readFileSync(pathToSharedSecret).toString();
+		signatureVerifier = fs.readFileSync(pathToSignatureVerifier).toString();
 		
 	} catch (err){
 		
@@ -48,18 +47,6 @@ function readFiles(){
 
 	}
 	
-	// Read in external file that contains cert
-	try {
-		
-		publicKey = fs.readFileSync(pathToPublicKey).toString();
-		
-	} catch (err){
-		
-		console.log(colors.red("JWT Verifier: " + err));
-		console.log(colors.green("JWT Verifier: exiting"));
-		process.exit(1);
-
-	}
 	
 	// Read in external file that contains claims to be checked
 	try {
@@ -106,7 +93,7 @@ function verifyJWT(submittedJWT){
 		
 		//Go through verifier function
 		try {
-				var verifiedJWT = jwt.verify(submittedJWT, sharedSecret);
+				var verifiedJWT = jwt.verify(submittedJWT, signatureVerifier);
 				console.log(colors.green("JWT Verifier: ") + "signature verified true");
 				//Pass to introspect
 				checkClaims(verifiedJWT,claims);

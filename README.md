@@ -15,7 +15,7 @@ the node-jwt-verifier project locally. Run "node install" from within this proje
 <b>Usage</b>
 <br/>
 <br/>
-Edit the necessary HMACSharedSecret or RSAPublicKey files for signature verification.  Add any claims to be checked in the claims file as a JSON object.
+Edit the SignatureVerifier file to contain either the HMACSharedSecret or RSAPublicKey for signature verification.  Add any claims to be checked in the claims file as a JSON object.
 <br/>
 To run enter <b>node app.js JWT</b> where JWT is the dot-delimited base64 encoded JWT token.
 <br/>
