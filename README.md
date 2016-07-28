@@ -1,7 +1,7 @@
 <b>Node JWT Verifier</b>
 </br>
 </br>
-A basic JSON Web Token (JWT) verifier, decoder and JWT checker for the command line, based on the jsonwebtoken library.
+A basic JSON Web Token (JWT) verifier, decoder and claims checker for the command line, based on the jsonwebtoken library.
 <br/>
 <br/>
 <b>Installation</b>
