@@ -8,7 +8,7 @@ A basic JSON Web Token (JWT) verifier, decoder and claims checker for the comman
 <br/>
 <br/>
 This app is written in node.js, so node.js will need to be download and configured for your operating system. Once installed, clone 
-the node-jwt-verifier project locally. Run "node install" from within this project directory to install dependencies
+the node-jwt-verifier project locally. Run "npm install" from within this project directory to install dependencies
  from the package.json file.
 <br/>
 <br/>
