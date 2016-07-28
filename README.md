@@ -24,3 +24,5 @@ To run enter <b>node app.js JWT</b> where JWT is the dot-delimited base64 encode
 Based on https://github.com/auth0/node-jsonwebtoken
 <br/>
 Use as-is no warranty.
+<br/>
+![ScreenShot](./node-jwt-verifier-sshot.png)
