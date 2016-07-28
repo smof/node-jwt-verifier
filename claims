@@ -1,0 +1,4 @@
+{
+	"issd": "3rd Party IDP",
+	"aud": "openam.example.com"
+}
