@@ -4,8 +4,8 @@
 #Certificate alias that you want to export
 ALIAS="test" 
 #Keystore location
-KEYSTORE="/home/smof/openam-nightly/openam/keystore.jks"
+KEYSTORE="/home/smof/openam/openam/keystore.jceks"
 #Location of output file
 OUTPUT="$ALIAS-publicKey.pem"
 
-keytool -exportcert -alias $ALIAS -keystore $KEYSTORE -rfc | openssl x509 -pubkey -noout > $OUTPUT
+keytool -exportcert -alias $ALIAS -keystore $KEYSTORE -storetype JCEKS -rfc | openssl x509 -pubkey -noout > $OUTPUT
