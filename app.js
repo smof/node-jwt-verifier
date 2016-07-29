@@ -14,7 +14,7 @@ console.log(colors.green("JWT Verifier: ") + "starting");
 var pathToSignatureVerifier = "SignatureVerifier"; // Either shared secret of certificate
 var pathToClaims = "claims"; //Place claims to be checked as a JSON object in here
 
-var submittedJWT, header, payload, signature, sharedSecret, publicKey = "";
+var submittedJWT, header, payload, signature, signatureVerifier = "";
 
 // Globals ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -37,8 +37,9 @@ function readFiles(){
 	// Read in external file that contains HMAC shared secret or cert
 	try {
 		
-		signatureVerifier = fs.readFileSync(pathToSignatureVerifier).toString();
-		
+		signatureVerifier = fs.readFileSync(pathToSignatureVerifier, 'utf8');
+		console.log(signatureVerifier);
+
 	} catch (err){
 		
 		console.log(colors.red("JWT Verifier: " + err));
@@ -74,13 +75,14 @@ function readJWT(submittedJWT){
 		}
 			
 		header = submittedJWT.split('.')[0];
-	    payload = submittedJWT.split('.')[1];
-     	signature = submittedJWT.split('.')[2];
+	    	payload = submittedJWT.split('.')[1];
+	     	signature = submittedJWT.split('.')[2];
 		console.log("");
-     	console.log(colors.bold("Header: ") + header);
+     		console.log(colors.bold("Header: ") + header);
 		console.log(colors.bold("Payload: ") + payload);
 		console.log(colors.bold("Signature: ") + signature);
 		console.log("");
+
 		//Pass to verify
 		verifyJWT(submittedJWT)
 }
@@ -93,6 +95,7 @@ function verifyJWT(submittedJWT){
 		
 		//Go through verifier function
 		try {
+				
 				var verifiedJWT = jwt.verify(submittedJWT, signatureVerifier);
 				console.log(colors.green("JWT Verifier: ") + "signature verified true");
 				//Pass to introspect
