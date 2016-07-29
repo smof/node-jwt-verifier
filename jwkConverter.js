@@ -1,4 +1,4 @@
-//Tranforms jwk_uri into PEM format
+//Tranforms JWK into PEM format
 //Simon Moffatt 29/07/16
 
 // Import libs
