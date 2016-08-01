@@ -25,4 +25,9 @@ Based on https://github.com/auth0/node-jsonwebtoken
 <br/>
 Use as-is no warranty.
 <br/>
+<br/>
+NB - jwkConverter.js is a pre-processing utility that converts the JWK often found via the jwk_uri in OIDC deployments to an RS/EC cert
+that can be used in the signature verification process.  A wrapper for jwk-to-pem.npm.
+<br/>
+<br/>
 ![ScreenShot](./node-jwt-verifier-sshot.png)
