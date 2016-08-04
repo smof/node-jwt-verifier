@@ -37,7 +37,7 @@ function readFiles(){
 	// Read in external file that contains HMAC shared secret or cert
 	try {
 		
-		signatureVerifier = fs.readFileSync(pathToSignatureVerifier, 'utf8');
+		signatureVerifier = fs.readFileSync(pathToSignatureVerifier,'utf8').trim();
 		console.log(signatureVerifier);
 
 	} catch (err){
@@ -96,6 +96,7 @@ function verifyJWT(submittedJWT){
 		//Go through verifier function
 		try {
 				
+				console.log(signatureVerifier);
 				var verifiedJWT = jwt.verify(submittedJWT, signatureVerifier);
 				console.log(colors.green("JWT Verifier: ") + "signature verified true");
 				//Pass to introspect
